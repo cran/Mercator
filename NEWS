@@ -1,0 +1,137 @@
+			Dear Emacs, please make this -*-Text-*- mode!
+	**************************************************
+	*						 *
+	*	       0.7 SERIES NEWS			 *
+	*						 *
+	**************************************************
+
+
+		CHANGES IN R VERSION 0.7.2
+
+BUG FIXES
+
+    o	Fixed a bug in "downsample", where probabilities could be
+        greater than one.
+
+		CHANGES IN R VERSION 0.7.1
+
+BUG FIXES
+
+    o	Fixed a labeling bug in "recolor".
+
+    o	Updated data objects to use "Mercator" rather than
+        "BinaryMatrix". 
+
+		CHANGES IN R VERSION 0.7.0
+
+BREAKING CHANGES
+
+    o	Renamed the "DistanceVis" class to "Mercator".
+
+    o	Renamed the hwole package fromk "BinaryMatrix" to "Mercator"
+
+BUG FIXES
+
+    o	Fixed a "drop=FALSE" bug with subsetting "info" components
+        when they are single-column data frames.
+
+		CHANGES IN R VERSION 0.6.2
+
+NEW FEATURES
+
+    o	Added a "recoverCluster" function to the "DistanceVis"
+        class. May eventually be converted to a "predict" method.
+
+BUG FIXES
+
+    o	Fixed a "drop=FALSE" bug with subsetting "info" components
+        when they are single-column data frames.
+
+		CHANGES IN R VERSION 0.6.0
+
+NEW FEATURES
+
+    o	Added new automatically computed graph layouts based on MDS
+        and t-SNE.
+
+		CHANGES IN R VERSION 0.5.0
+
+NEW FEATURES
+
+    o	Added a new visualization, based on igraph.
+
+		CHANGES IN R VERSION 0.4.0
+
+INCOMPATIBLE CHANGES
+
+    o	Decided that the "recolor" function should be called
+        "remapColors", since the point is to make color assiognments
+        for two different distance metrics compatible
+
+NEW FEATURES
+
+    o	Added a **new** function called "recolor", which allows you
+        to change the stored color assignments based on a new
+        clustering using the same distance metric.
+
+		CHANGES IN R VERSION 0.3.0
+
+INCOMPATIBLE CHANGES
+
+    o	Decided that the BinaryMatrix class needs to carry along
+        information about both rows and columns, and not just
+        columns. As a results, changed the name of te "featresa" slot
+        to "columnInfo, and added a parallel "rowInfo" slot.
+
+NEW FEATURES
+
+    o	Added a transpose ("t") operator for a BinaryMatrix. 
+
+		CHANGES IN R VERSION 0.2.0
+
+NEW FEATURES
+
+    o	Removed the (temporary) "CML.rda" file and replaced it with two
+        smaller subsets, "CML1000.rda" and "CML500.rda". Restructured
+        the appropriate test scripts to use the smaller data sets so
+        they run faster.  Note that both subsets were created using
+        the "downsample" function.
+
+		CHANGES IN R VERSION 0.1.1
+
+NEW FEATURES
+
+    o	Added a "[" method to the DistanceVis class. Note the slowest
+        part of this method presently is subsetting the hierarchical
+        clusters, since it is implemented using the "prune" routine in
+        "dendextend", which removes one leaf at a time.
+
+    o	Added a "recolor" function thast allows you to make the
+        color-and-symbol assigments for different distance matrices
+        behave "as consistenbtly as possible".
+
+    o	Added a "downsample" function based on Peng Qiu's idea in the
+        SPADE package. The point is to take a subsample that
+        deliberately does *not* preserve the popultion distribution.
+        Instead, it samples fewer items fromt he most dense areas ofg
+        the distribution in order to preserve samples of as many
+        clusters as possible.
+
+BUG FIXES
+
+    o	Fixed a bug in the definiton of the Goodman-Kruskal
+        similarity measure, where half a term (inside a "max"
+        computation) had been accidentally omitted.
+
+		CHANGES IN R VERSION 0.1.0
+
+NEW FEATURES
+
+    o	Initial version. Classes BVinaryMatrix and DistanceVis,
+    	although the first may be misleading and the second is a lousy
+    	name. Both may change by version 1.0.
+
+BUG FIXES
+
+    o	Numerous.
+

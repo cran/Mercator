@@ -1,0 +1,48 @@
+###
+### NAMESPACE
+###
+import(methods)
+import(Thresher)
+#importFrom("Thresher", "Thresher", "Reaper", "remap")
+
+importFrom("stats", "dist", "hclust", "cmdscale", "as.dist",
+           "rbinom", "as.dendrogram", "as.hclust", "quantile")
+importFrom("utils", "data")
+importFrom("graphics", "hist")
+importFrom("cluster", "pam")
+importFrom("Rtsne", "Rtsne")
+importFrom("Polychrome", "dark.colors")
+importFrom("dendextend", "prune")
+importFrom("igraph", "vertex_attr", "set_vertex_attr",
+           "layout_nicely", "graph_from_data_frame")
+# redefined S3 methods
+#importMethodsFrom(oompaBase, "summary", "plot", "image")
+
+
+# 01-metrics
+export("binaryDistance")
+
+# 02-binaryMatrix
+exportClasses("BinaryMatrix")
+export("BinaryMatrix", "removeDuplicateFeatures")
+
+exportMethods("[", "dim", "summary", "t")
+
+# 03-thresh
+exportClasses("ThreshedBinaryMatrix")
+export("threshLGF")
+
+# 04-vis
+exportClasses("Mercator")
+export("Mercator", "addVisualization", "getClusters")
+
+exportMethods("hist")
+
+export(recolor, remapColors)
+
+# 05-graph
+export(downsample)
+
+
+# new methods for new classes
+# exportMethods("plot", "image", "screeplot")
