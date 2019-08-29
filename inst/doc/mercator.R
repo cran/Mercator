@@ -65,7 +65,7 @@ hist(jacc.Vis,
 
 ## ----jacc-hclust---------------------------------------------------------
 names(jacc.Vis@view)
-plot(jacc.Vis@view[["hclust"]], col="black", pch=jacc.Vis@symv)
+plot(jacc.Vis, view = "hclust")
 
 ## ----jacc-tsne5----------------------------------------------------------
 par(pty="s")
@@ -73,23 +73,19 @@ jacc.Vis <- addVisualization(jacc.Vis, "tsne",
             perplexity=5, 
             xlab="T1", ylab="T2")
 names(jacc.Vis@view)
-plot(jacc.Vis@view[["tsne"]]$Y, col=jacc.Vis@colv, pch=jacc.Vis@symv,
-     main="t-SNE; Jaccard Distance; perplexity=5")
+plot(jacc.Vis, view = "tsne", main="t-SNE; Jaccard Distance; perplexity=5")
 
 ## ----jacc-tsne10---------------------------------------------------------
 jacc.Vis <- addVisualization(jacc.Vis, "tsne", 
-            perplexity=10,
-            xlab="T1", ylab="T2")
+            perplexity=10)
 names(jacc.Vis@view)
-plot(jacc.Vis@view[["tsne"]]$Y, col=jacc.Vis@colv, pch=jacc.Vis@symv,
-     main="t-SNE; Jaccard Distance; perplexity=10")
+plot(jacc.Vis, view = "tsne",  main="t-SNE; Jaccard Distance; perplexity=10")
 par(pty="m")
 
 ## ----jacc-mds1-----------------------------------------------------------
 jacc.Vis <- addVisualization(jacc.Vis, "mds")
 names(jacc.Vis@view)
-plot(jacc.Vis@view[["mds"]], col=jacc.Vis@colv, pch=jacc.Vis@symv,
-      main="MDS; Jaccard Distance", xlab="PC1", ylab="PC2")
+plot(jacc.Vis, view = "mds", main="MDS; Jaccard Distance")
 
 ## ----downsample----------------------------------------------------------
 X <- jacc.Vis
@@ -100,24 +96,21 @@ J <- jacc.Vis[P]
 J <- addVisualization(J, "tsne", perplexity=5)
 names(J@view)
 par(pty="s")
-plot(J@view[["tsne"]]$Y, col=J@colv, pch=J@symv, main="Down-sampled t-SNE Plot",
-     xlab="T1", ylab="T2")
+plot(J, view = "tsne", main="Down-sampled t-SNE Plot")
 par(pty="m")
 
 ## ----igraph--------------------------------------------------------------
 set.seed(10967)
 J <- addVisualization(J, "mds")
 J <- addVisualization(J, "graph")
-G <- J@view[["graph"]]
 
-plot(G$graph, layout=G$layouts[["mds"]])
-
-plot(G$graph, layout=G$layouts[["nicely"]], 
+plot(J, view = "graph", layout = "mds")
+plot(J, view = "graph", layout = "nicely", 
      main="Graphical View of Down-sampled Jaccard Distance Matrix",
      xlim=c(-1,1))
 
 
-plot(G$graph, layout=G$layouts[["tsne"]], main="T-SNE Layout")
+plot(J, view = "graph", layout = "tsne", main="T-SNE Layout")
 
 ## ----cluster1Identity----------------------------------------------------
 my.clust <- getClusters(jacc.Vis)
@@ -133,12 +126,10 @@ Cl4
 set.seed(8642)
 sokal.Vis <- Mercator(my.binmat, "sokal", "tsne", K=kk, peplexity = 10)
 table(getClusters(sokal.Vis), getClusters(jacc.Vis))
-plot(sokal.Vis@view[["tsne"]]$Y, col=sokal.Vis@colv, pch=sokal.Vis@symv,
-     main="t-SNE; Sokal-Michener Distance; perplexity=10")
+plot(sokal.Vis, view = "tsne", main="t-SNE; Sokal-Michener Distance; perplexity=10")
 
 ## ----recolored-----------------------------------------------------------
 SV <- remapColors(jacc.Vis, sokal.Vis)
 table(getClusters(SV), getClusters(jacc.Vis))
-plot(SV@view[["tsne"]]$Y, col=SV@colv, pch=SV@symv,
-     main="t-SNE; Sokal-Michener Distance; perplexity=10")
+plot(SV, view = "tsne", main="t-SNE; Sokal-Michener Distance; perplexity=10")
 

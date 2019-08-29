@@ -24,7 +24,7 @@ shrinkView <- function(name, object, i) {
     }
     L <- L[!i]
     P <- prune(dend, L) # this step does not scale well
-                        # since it removes one leaf at a time
+                        # since it removes one leaf at a tim
     as.hclust(P)
   }
   switch(name,
@@ -69,6 +69,117 @@ setMethod("hist", signature(x = "Mercator"), function(x, breaks=123, ...) {
   M <- as.matrix(x@distance)
   U <- M[upper.tri(M)]
   hist(U, breaks=breaks, ...)
+})
+
+setMethod("barplot", signature("Mercator"),
+          function(height, main = '', sub = NULL, border = NA, space = 0, ...) {
+  clus <- getClusters(height)
+  silh <- silhouette(clus, height@distance)
+  od <- order(clus, silh[,'sil_width'])
+  if (is.null(sub)) {
+    swd <- silh[od, 'sil_width']
+    sub <- paste("Mean SW =", round(mean(swd), 5))
+  }
+  barplot(swd, col = height@colv[od], border=NA, 
+          sub=sub, main=main, ...)
+})
+
+setMethod("plot", signature("Mercator", "missing"),
+          function(x, view = NULL, ask = NULL, ...) {
+### known kinds of visualizations
+  plotMDS <- function(x, ...) {
+    plot(x@view[["mds"]], col=x@colv, pch=x@symv, xlab = "PC1", ylab="PC2", ...)
+  }
+  plotTSNE <- function(x, ...) {
+    plot(x@view[["tsne"]]$Y, col=x@colv, pch=x@symv, xlab = "T1", ylab="T2", ...)
+  }
+  plotHC <- function(x, ...) {
+    dend <- x@view[["hclust"]]
+    labs <- dend$labels
+    if (is.null(labs)) {
+      labs <- seq(1, length(dend$order))
+    }
+    plotColoredClusters(dend, cols = x@colv, labs = labs, ...)
+  }
+  plotIG <- function(x, layout = NULL, ...) {
+    G <- x@view[["graph"]]
+    if (is.null(layout)) {
+      layout <- G$layouts[[1]]
+    }
+    if (is.character(layout)) {
+      foo <- ifelse(layout %in% c("mds", "tsne"),
+                    jitter,
+                    function(x) x)
+      layout <- foo(G$layouts[[layout[1]]])
+    }
+    plot(G$graph, layout = layout, ...)
+  }
+### implications of 'view' and 'ask' parameters
+  if (is.null(view)) { # first attached view is the default
+    view <- list(names(x@view)[1])
+  }
+  if (length(view) ==1 & view == "all") {
+    view <- names(x@view)
+  }
+  if (!is.list(view)) { # can show more than one
+    view <- as.list(view)
+  }
+  if (is.null(ask)) {
+    ask <- prod(par("mfcol")) < length(view) && dev.interactive()
+  }
+  if (ask & length(view) > 1) { # ask politely
+    oask <- devAskNewPage(TRUE)
+    on.exit(devAskNewPage(oask))
+  }
+### actually plot stuff
+  for (V in view) {
+    switch(V,
+           mds = plotMDS(x, ...),
+           tsne = plotTSNE(x, ...),
+           hclust = plotHC(x, ...),
+           graph = plotIG(x, ...))
+  }
+  invisible(x)
+})
+
+setMethod("scatter", signature(object = "Mercator"),
+          function(object, view = NULL, ask = NULL,
+                   colramp = NULL, ...) {
+### known kinds of visualizations
+  smoothMDS <- function(object, ...) {
+    smoothScatter(x = object@view[["mds"]], xlab = "PC1", ylab="PC2", ...)
+  }
+  smoothTSNE <- function(object, ...) {
+    smoothScatter(x = object@view[["tsne"]]$Y, xlab = "T1", ylab="T2", ...)
+  }
+### implications of 'view' and 'ask' parameters
+  if (is.null(view)) { # first attached view is the default
+    view <- list(names(object@view)[1])
+  }
+  if (length(view) ==1 & view == "all") {
+    view <- names(object@view)
+  }
+  if (!is.list(view)) { # can show more than one
+    view <- as.list(view)
+  }
+  if (is.null(ask)) {
+    ask <- prod(par("mfcol")) < length(view) && dev.interactive()
+  }
+  if (ask && length(view) > 1) { # ask politely
+    oask <- devAskNewPage(TRUE)
+    on.exit(devAskNewPage(oask))
+  }
+### actually smooth stuff
+  if (is.null(colramp)) {
+    colramp <- topo.colors
+  }
+  for (V in view) {
+    switch(V,
+           mds = smoothMDS(object, colramp = colramp, ...),
+           tsne = smoothTSNE(object, colramp = colramp, ...),
+           cat("No smooth scatter plot is available for view '", V, "'.\n"))
+  }
+  invisible(object)
 })
 
 
@@ -121,7 +232,7 @@ remapColors <- function(fix, vary) {
       )
 }
 
-recolor <- function(DV, clusters) {
+setClusters <- function(DV, clusters) {
   dispSet <- makeDisplay(clusters)
   colv <- dispSet$colv
   symv <- dispSet$symv
@@ -133,6 +244,11 @@ recolor <- function(DV, clusters) {
       colv = colv,
       symv = symv
       )
+}
+recolor <- function(DV, clusters) {
+  .Deprecated("setClusters",
+              msg = "Please use the new, more descriptive name (setClusters) for this function.")
+  setClusters(DV, clusters)
 }
 
 Mercator <- function(binaryMat, metric, method, K, ...) {

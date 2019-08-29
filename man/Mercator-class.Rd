@@ -6,6 +6,9 @@
 \alias{dim,Mercator-method}
 \alias{hist,Mercator-method}
 \alias{summary,Mercator-method}
+\alias{barplot,Mercator-method}
+\alias{plot,Mercator,missing-method}
+\alias{scatter,Mercator-method}
 \alias{addVisualization}
 \alias{getClusters}
 \title{
@@ -71,11 +74,34 @@ getClusters(DV)
 }
 \section{Methods}{
   \describe{
-%    \item{plot}{\code{signature(object = "Mercator"@view[[n]], col = "Mercator"@colv, pch = "Mercator"@symv)}}:{
-%      Produce a plot of the \code{nth} visualization created within a 
-%      Mercator object. Producing a t-SNE plot requires the added 
-%      information \code{"Mercator"@view[[n]]$Y}
-%    }
+    \item{plot(x, view = NULL, ask = NULL, ...):}{
+      Produce a plot of one or more visualizations within a 
+      Mercator object. The default \code{view}, when omitted, is the
+      first one contained in the object. You can request multiple views
+      at once; if the current plot layout doesn't have enough space in
+      an interactive session, the \code{ask} parameters detemines whether
+      the system will ask you before advancing to the next plot. When
+      plotting a graph view, you can use an optional \code{layout}
+      parameter to select a specific layout by name.
+    }
+    \item{barplot{height, maion = '', sub = NULL, border = NA, space =
+	0, ...}}{
+      Produce a (colored) barplot of the silhouette widths for elements
+      clustered in this class. Arguments are as described in te base
+      function \code{\link{barplot}}. 
+    }
+    \item{scatter(object, view = NULL, ask = NULL, colramp = NULL, ...):}{
+      Produce a smooth scatter plot of one or more visualizations within a 
+      Mercator object. The default \code{view}, when omitted, is the
+      first one contained in the object. You can request multiple views
+      at once; if the current plot layout doesn't have enough space in
+      an interactive session, the \code{ask} parameters detemines whether
+      the system will ask you before advancing to the next plot. When
+      plotting a graph view, you can use an optional \code{layout}
+      parameter to select a specific layout by name. Arguments are
+      otherwise the same as the \code{\link{smoothScatter}} function,
+      execpt that the default color ramp is \code{topo.colors}.
+    }
     \item{hist:}{\code{signature(object = "Mercator")}}{
       Produce a histogram of distances calculated in the dissimilarity 
       matrix generated in the \code{Mercator} object.
@@ -105,6 +131,9 @@ getClusters(DV)
   
   The \code{getClusters} function returns a vector of cluster assignments.
 }
+\seealso{
+  \code{\link{silhouette}}, \code{\link{smoothScatter}}, \code{\link{topo.colors}}.
+}
 \author{Kevin R. Coombes <krc@silicovore.com>, Caitlin E. Coombes}
 \examples{
 #Form a BinaryMatrix
@@ -120,9 +149,12 @@ summary(my.binmat)
 my.vis <- Mercator(my.binmat, "euclid", "hclust", K=3) 
 summary(my.vis)
 hist(my.vis)
+barplot(my.vis)
 my.vis <- addVisualization(my.vis, "mds")
-plot(my.vis@view[[1]], col=my.vis@colv, pch=my.vis@symv)
-plot(my.vis@view[[2]], col=my.vis@colv, pch=my.vis@symv)
+plot(my.vis, view = "hclust")
+plot(my.vis, view = "mds")
+
+scatter(my.vis, view ="mds")
 
 #Recover cluster identities
 #What species comprise cluster 1?

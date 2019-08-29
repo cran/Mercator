@@ -1,10 +1,92 @@
 			Dear Emacs, please make this -*-Text-*- mode!
 	**************************************************
 	*						 *
-	*	       0.7 SERIES NEWS			 *
+	*	       0.9 SERIES NEWS			 *
 	*						 *
 	**************************************************
 
+
+		CHANGES IN R VERSION 0.9.4
+
+NEW FEATURES
+
+    o	Added a new "barplot" method for the Meractor class, which
+        plots the silhouette widths in the colors already assigned to
+        clusters.
+
+    o	Added a new "scatter" method for the Mercator class, which
+        displays some views as a smoothed scatter plot.
+
+		CHANGES IN R VERSION 0.9.2
+
+NEW FEATURES
+
+    o	Added a new "plot" method for the Meractor class, which
+        automatically sets the colors and symbols for different
+        views.
+
+		CHANGES IN R VERSION 0.9.1
+
+BUG FIXES
+
+    o	Fixed the bug in overcounting "redundant" or "unused" features.
+
+		CHANGES IN R VERSION 0.9.0
+
+BREAKING CHANGES
+
+    o	Deprecated the "recolor" function in favor of a new name, "setClusters".
+
+		CHANGES IN R VERSION 0.8.8
+
+BUG FIXES
+
+    o	Checked all the documentation; first version submitted to CRAN.
+
+		CHANGES IN R VERSION 0.8.7
+
+BUG FIXES
+
+    o	Fixed the "names" bug in using iGraph visualizations.
+
+		CHANGES IN R VERSION 0.8.2
+
+FEATURES
+
+    o	Added a (mostly) working vignette. (Is that a feature?)
+
+		CHANGES IN R VERSION 0.8.0
+
+BREAKING CHANGES
+
+    o	Renamed the "recoverCluster" function to "getClusters".
+
+		CHANGES IN R VERSION 0.7.8
+
+BUG FIXES
+
+    o	Fixed a NAMESPACE/DESCRIPTION issue to make it easier to work
+        with slots borrowed from other classes.
+
+		CHANGES IN R VERSION 0.7.7
+
+BUG FIXES
+
+    o	Worked around an issue in igraph, which doesn't like layouts
+        where nodes overlap.
+
+		CHANGES IN R VERSION 0.7.5
+
+BUG FIXES
+
+    o	Fixed a bug in igraph views, in order to work with more than
+        48 clusters.
+
+		CHANGES IN R VERSION 0.7.4
+
+FEATURES
+
+    o	Added a bunch of man pages (is that a feature?).
 
 		CHANGES IN R VERSION 0.7.2
 
@@ -28,7 +110,7 @@ BREAKING CHANGES
 
     o	Renamed the "DistanceVis" class to "Mercator".
 
-    o	Renamed the hwole package fromk "BinaryMatrix" to "Mercator"
+    o	Renamed the whole package fromk "BinaryMatrix" to "Mercator"
 
 BUG FIXES
 
