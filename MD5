@@ -1,10 +1,10 @@
-85d998bd2fe54d1a136feaa6031d3ca8 *DESCRIPTION
-83bd44e96508d2ecf538af4cb81a6e4b *NAMESPACE
-e70b5625e32ec88f4d50b7fdcd7579a5 *NEWS
+80b7d22d9b53902f7ac0791cc16fef0d *DESCRIPTION
+4f53547b3f9b5d7469a92e113140525f *NAMESPACE
+055a461f7f46a87e7f7e9e847d445e1b *NEWS
 5832764423284ad0e9b1ab51d4ef1040 *R/01-metrics.R
 3a72f270a42f04df56f3e63f78c75e80 *R/02-binaryMatrix.R
 04fedaafab3d015d37a46dacc50fe8e3 *R/03-thresh.R
-291f59a7cb4e7b2966141fdb1735dc95 *R/04-vis.R
+e4dab183208b9332346c01c83187e08c *R/04-vis.R
 dbb4ce5e72edea6c9a4017dae4cc5068 *R/05-graph.R
 be07db71e5d53bac7497e68637c2e06b *TODO
 b1b28785cab83aa428520c40703ddfb7 *build/vignette.rds
@@ -19,7 +19,7 @@ d859fd14bf77147b6724921e3d57e64e *data/lgfFeatures.rda
 fa49d5e46f81c3a3948f6f6e44a0f8e5 *inst/Examples/test005-removedups.Rmd
 3fd2db788ca4a9bd734a6025479f83e6 *inst/doc/mercator.R
 4f0f01bdc4cb76e8b76a282bc08e6c34 *inst/doc/mercator.Rmd
-b8087aff8610a2c4ab7c297838109d9d *inst/doc/mercator.html
+6cebe9a53139b49e53b530f85b59aa6c *inst/doc/mercator.html
 115cc371c068aceb6d1902518f02431a *man/Mercator-class.Rd
 28e85829ab3ebf270c7768935fd185bb *man/binaryDistance.Rd
 79a31426f350b0cf80b7b55b0d9372fd *man/binaryMatrix.Rd
