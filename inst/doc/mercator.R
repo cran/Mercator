@@ -133,3 +133,13 @@ SV <- remapColors(jacc.Vis, sokal.Vis)
 table(getClusters(SV), getClusters(jacc.Vis))
 plot(SV, view = "tsne", main="t-SNE; Sokal-Michener Distance; perplexity=10")
 
+## ----sv2-----------------------------------------------------------------
+slot(jacc.Vis, "palette") <- c("red", "orange", "green", "blue",
+                               "cyan", "magenta", "purple", "black")
+plot(jacc.Vis, view = "tsne")
+
+## ----small---------------------------------------------------------------
+slot(jacc.Vis, "palette") <- c("red", "green", "blue",
+                               "cyan", "purple")
+plot(jacc.Vis, view = "tsne")
+
