@@ -1,9 +1,31 @@
 			Dear Emacs, please make this -*-Text-*- mode!
 	**************************************************
 	*						 *
-	*	       0.10 SERIES NEWS			 *
+	*	       0.11 SERIES NEWS			 *
 	*						 *
 	**************************************************
+
+		CHANGES IN R VERSION 0.11.2
+
+NEW FEATURES
+
+    o	Modified the Mercator constructor to accept an arbnitrary
+        distance matrix and not just a BinaryMatrix. Also included a
+        second vignette focusing on continuous data, with an extra
+        data set included to provide an illustration.
+
+		CHANGES IN R VERSION 0.11.0
+
+NEW FEATURES
+
+    o	Edited the binary vignette for clarification and better
+        examples.
+
+		CHANGES IN R VERSION 0.10.1
+
+BUG FIX
+
+    o	Fixed the bug with missing names on `clusters` slot. Again.
 
 		CHANGES IN R VERSION 0.10.0
 
