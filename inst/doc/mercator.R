@@ -18,8 +18,8 @@ summary(my.binmat)
 my.binmat <- t(my.binmat)
 summary(my.binmat)
 
-## ----duplicateFeatures--------------------------------------------------------
-my.binmat <- removeDuplicateFeatures(my.binmat)
+## ----duplicates---------------------------------------------------------------
+my.binmat <- removeDuplicates(my.binmat)
 summary(my.binmat)
 
 ## -----------------------------------------------------------------------------
