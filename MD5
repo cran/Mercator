@@ -1,4 +1,4 @@
-5a3987c2d6c98bc6a17fc962addfaa3f *DESCRIPTION
+0c955788fd6b34d5e31a097f48a3a297 *DESCRIPTION
 898e708d76a137507fa1dfc8f687ec2c *NAMESPACE
 1f35f5341f1c3b0fe3ee1a04b2d08683 *NEWS
 5832764423284ad0e9b1ab51d4ef1040 *R/01-metrics.R
@@ -22,10 +22,10 @@ b4f4466d8eac62c01446ef7ee1c80ed3 *data/lgfFeatures.rda
 fa49d5e46f81c3a3948f6f6e44a0f8e5 *inst/Examples/test005-removedups.Rmd
 2b830b7a99e1e446a3726dc92c4d3984 *inst/doc/mercVis.R
 5c4d4abd8590f1bc2967613dada2b29f *inst/doc/mercVis.Rmd
-26fa3ff4287fbbefc19728c940326c3b *inst/doc/mercVis.html
+2183eccb22ff338dae2f62389be1f5db *inst/doc/mercVis.html
 b05d675ec20608d6aaa06aaabbb3531b *inst/doc/mercator.R
 0cfc502b6196f002a54fecbb37692902 *inst/doc/mercator.Rmd
-432d413cdd416eb4ad4b73436caa532d *inst/doc/mercator.html
+06ae8461e5eca0c2fa9efdbcc93e9d22 *inst/doc/mercator.html
 18e85763006d68914b01de46cf6dbd40 *man/Mercator-class.Rd
 28e85829ab3ebf270c7768935fd185bb *man/binaryDistance.Rd
 10c980a82e31c31ea572f6f8d9e34a10 *man/binaryMatrix.Rd
