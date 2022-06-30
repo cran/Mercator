@@ -1,6 +1,6 @@
 Package: Mercator
-Version: 1.1.1
-Date: 2021-07-15
+Version: 1.1.2
+Date: 2022-06-28
 Title: Clustering and Visualizing Distance Matrices
 Author: Kevin R. Coombes, Caitlin E. Coombes
 Maintainer: Kevin R. Coombes <krc@silicovore.com>
@@ -17,6 +17,6 @@ License: Apache License (== 2.0)
 biocViews: Clustering
 URL: http://oompa.r-forge.r-project.org/
 NeedsCompilation: no
-Packaged: 2021-07-15 19:35:18 UTC; KRC
+Packaged: 2022-06-30 15:29:16 UTC; KRC
 Repository: CRAN
-Date/Publication: 2021-07-16 13:30:06 UTC
+Date/Publication: 2022-06-30 16:20:02 UTC
