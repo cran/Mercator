@@ -50,10 +50,10 @@ getClusters(DV)
       \item{\code{any}}{Any arguments to the \code{\link{cmdscale}} function for an
 	\code{mds} visualization. Most commonly, this is likely to
 	include \code{k}, the number of dimensions to compute.}
-      \item{\code{any}}{Any arguments to the \code{\link{Rtsne}} function for a
+      \item{\code{any}}{Any arguments to the \code{\link[Rtsne]{Rtsne}} function for a
 	\code{tsne} visualization. Common examples include \code{dims}
 	and \code{perplexity}.}
-      \item{\code{any}}{Any arguments to the \code{\link{som}} function
+      \item{\code{any}}{Any arguments to the \code{\link[kohonen]{som}} function
 	to construct or view a self-organizing map. Most commonly, this is likely to
 	include \code{somgrid}, to specify the size and layout of the
 	grid, or \code{type} to specify which data to show in the plot.}
@@ -138,9 +138,9 @@ getClusters(DV)
   The \code{getClusters} function returns a vector of cluster assignments.
 }
 \seealso{
-  \code{\link{silhouette}}, \code{\link{smoothScatter}},
-  \code{\link{topo.colors}}, \code{\link{som}},
-  \code{\link{umap}}.
+  \code{\link[cluster]{silhouette}}, \code{\link{smoothScatter}},
+  \code{\link{topo.colors}}, \code{\link[kohonen]{som}},
+  \code{\link[umap]{umap}}.
 }
 \author{Kevin R. Coombes <krc@silicovore.com>, Caitlin E. Coombes}
 \examples{
