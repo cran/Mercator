@@ -30,7 +30,7 @@ addVisualization(DV, method, ...)
 getClusters(DV)
 }
 \arguments{
-  \item{X}{Either a \code{\link{BinaryMatrix}} or a \code{\link{dist}} object.}
+  \item{X}{Either a \code{\link{BinaryMatrix}} or a \code{\link[stats]{dist}} object.}
   \item{metric}{A \code{\link{binaryDistance}} currently limited to the
     names of 10 selected distance metrics: \code{jaccard},
     \code{sokalMichener}, \code{hamming},
@@ -47,7 +47,7 @@ getClusters(DV)
     implement different methods for \code{addVisualization} (possibly
     passed here through the \code{Mercator} function). These include
     \describe{
-      \item{\code{any}}{Any arguments to the \code{\link{cmdscale}} function for an
+      \item{\code{any}}{Any arguments to the \code{\link[stats]{cmdscale}} function for an
 	\code{mds} visualization. Most commonly, this is likely to
 	include \code{k}, the number of dimensions to compute.}
       \item{\code{any}}{Any arguments to the \code{\link[Rtsne]{Rtsne}} function for a
@@ -92,7 +92,7 @@ getClusters(DV)
 	0, ...)}{
       Produce a (colored) barplot of the silhouette widths for elements
       clustered in this class. Arguments are as described in te base
-      function \code{\link{barplot}}. 
+      function \code{\link[graphics]{barplot}}. 
     }
     \item{scatter(object, view = NULL, ask = NULL, colramp = NULL, ...):}{
       Produce a smooth scatter plot of one or more visualizations within a 
@@ -103,7 +103,7 @@ getClusters(DV)
       the system will ask you before advancing to the next plot. When
       plotting a graph view, you can use an optional \code{layout}
       parameter to select a specific layout by name. Arguments are
-      otherwise the same as the \code{\link{smoothScatter}} function,
+      otherwise the same as the \code{\link[graphics]{smoothScatter}} function,
       execpt that the default color ramp is \code{topo.colors}.
     }
     \item{hist(x, breaks=123, ...):}{
@@ -138,8 +138,8 @@ getClusters(DV)
   The \code{getClusters} function returns a vector of cluster assignments.
 }
 \seealso{
-  \code{\link[cluster]{silhouette}}, \code{\link{smoothScatter}},
-  \code{\link{topo.colors}}, \code{\link[kohonen]{som}},
+  \code{\link[cluster]{silhouette}}, \code{\link[graphics]{smoothScatter}},
+  \code{\link[grDevices]{topo.colors}}, \code{\link[kohonen]{som}},
   \code{\link[umap]{umap}}.
 }
 \author{Kevin R. Coombes <krc@silicovore.com>, Caitlin E. Coombes}
